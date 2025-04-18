@@ -12,7 +12,7 @@ import {
 import { motion } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import * as THREE from 'three'
-
+ 
 // Types
 interface NodeType {
   id: string;
