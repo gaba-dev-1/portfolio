@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --accent: 262.1 83.3% 57.8%;
+  --accent-foreground: 210 20% 98%;
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --surface: 240 5% 96%;
+  --surface-foreground: 240 10% 3.9%;
+  
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --accent: 262.1 83.3% 57.8%;
+  --accent-foreground: 210 20% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --card: 240 10% 7%;
+  --card-foreground: 0 0% 98%;
+  --surface: 240 10% 9.8%;
+  --surface-foreground: 0 0% 98%;
+}
+
+@layer base {
+  * {
+    @apply border-border antialiased;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    background-image: 
+      radial-gradient(circle at 90% 5%, rgba(109, 40, 217, 0.04) 0%, transparent 45%),
+      radial-gradient(circle at 10% 30%, rgba(109, 40, 217, 0.02) 0%, transparent 45%),
+      radial-gradient(circle at 80% 80%, rgba(109, 40, 217, 0.03) 0%, transparent 45%);
+    background-attachment: fixed;
+  }
+  
+  ::selection {
+    @apply bg-accent/20 text-accent;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .heading {
+    @apply font-display tracking-tight;
+  }
+  
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors 
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2
+    disabled:opacity-50 disabled:pointer-events-none;
+  }
+  
+  .btn-primary {
+    @apply btn bg-accent text-accent-foreground hover:bg-accent/90 shadow-[0_0_15px_rgba(109,40,217,0.15)] hover:shadow-[0_0_20px_rgba(109,40,217,0.25)] px-6 py-3;
+  }
+  
+  .btn-outline {
+    @apply btn border border-foreground/10 hover:bg-muted px-6 py-3;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+  
+  .glass {
+    @apply bg-white/[0.06] backdrop-blur-[10px] border border-white/[0.08] dark:bg-black/[0.06] dark:border-white/[0.04];
+  }
+  
+  .mask-radial {
+    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+    mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+  }
+  
+  .purple-glow {
+    box-shadow: 0 0 25px -5px rgba(109, 40, 217, 0.2);
+  }
+  
+  .purple-gradient-text {
+    @apply bg-gradient-to-r from-accent to-accent/70 bg-clip-text text-transparent;
+  }
+  
+  .purple-highlight {
+    @apply relative;
+  }
+  
+  .purple-highlight::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-full h-[5px] bg-accent/20 -z-10 rounded-full;
+  }
+
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #6d28d9;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+}
+
+/* Animation for nav indicator */
+@keyframes pulse-border {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(109, 40, 217, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(109, 40, 217, 0.1);
+  }
+}
+
+.animate-pulse-border {
+  animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* For smooth scrollbar */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Custom scrollbar */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-accent/30 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent/60;
+  }
+}
