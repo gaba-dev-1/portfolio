@@ -22,7 +22,7 @@ interface NodeType {
   phase: number;
 }
 
-// Nodes on a ring
+// Nodes on a ring with memoized geometry and materials
 function RingWithNodes({ 
   color, 
   radius, 
@@ -30,7 +30,6 @@ function RingWithNodes({
   nodeCount = 6, 
   rotation = [0, 0, 0], 
   speed = 1,
-  sceneSpeed = 1,
   ringId
 }: { 
   color: string; 
@@ -39,7 +38,6 @@ function RingWithNodes({
   nodeCount?: number; 
   rotation?: [number, number, number]; 
   speed?: number;
-  sceneSpeed?: number;
   ringId: string;
 }) {
   const ringRef = useRef<THREE.Group>(null)
@@ -68,18 +66,21 @@ function RingWithNodes({
   }, [radius, nodeCount, ringId])
   
   // Materials with optimized creation
-  const [ringMaterial, nodeMaterial] = useMemo(() => [
+  const ringMaterial = useMemo(() => (
     <MeshDistortMaterial
       color={color} 
       distort={0.1} 
-      speed={2 * sceneSpeed}
+      speed={2}
       metalness={0.9} 
       roughness={0.2} 
       emissive={color}
       emissiveIntensity={0.5} 
       transparent={true}
       opacity={0.9}
-    />,
+    />
+  ), [color])
+  
+  const nodeMaterial = useMemo(() => (
     new THREE.MeshStandardMaterial({
       color, 
       emissive: color, 
@@ -88,13 +89,13 @@ function RingWithNodes({
       roughness: 0.2, 
       transparent: true
     })
-  ], [color, sceneSpeed])
+  ), [color])
   
   // Animation for ring and nodes
   useFrame(({ clock }) => {
     if (!ringRef.current || !nodesRef.current) return
     
-    const t = clock.getElapsedTime() * speed * sceneSpeed
+    const t = clock.getElapsedTime() * speed
     
     // Animate ring
     ringRef.current.rotation.x = rotation[0] + Math.sin(t * 0.3) * 0.2
@@ -142,15 +143,14 @@ function RingWithNodes({
 }
 
 // Animated core sphere with distortion effects
-function AnimatedCore({ color, speed = 1 }: { color: string; speed?: number }) {
+function AnimatedCore({ color }: { color: string }) {
   const coreRef = useRef<THREE.Mesh>(null)
-  const coreTime = useRef(0)
   
   useFrame(({ clock }) => {
     if (!coreRef.current) return
     
-    coreTime.current = clock.getElapsedTime() * speed
-    coreRef.current.rotation.y = coreTime.current * 0.2
+    const time = clock.getElapsedTime()
+    coreRef.current.rotation.y = time * 0.2
   })
   
   return (
@@ -159,7 +159,7 @@ function AnimatedCore({ color, speed = 1 }: { color: string; speed?: number }) {
       <MeshDistortMaterial
         color={color}
         distort={0.4}
-        speed={3 * speed}
+        speed={3}
         metalness={0.8}
         roughness={0.2}
         emissive={color}
@@ -171,17 +171,11 @@ function AnimatedCore({ color, speed = 1 }: { color: string; speed?: number }) {
   )
 }
 
-// Main scene component with optimized structure
-function Scene({ speed = 1 }: { speed?: number }) {
+// Main scene component
+function Scene() {
   const { theme } = useTheme()
   const isDark = theme === 'dark'
   const groupRef = useRef<THREE.Group>(null)
-  const speedRef = useRef(speed)
-  
-  // Update speed ref when speed changes
-  useEffect(() => {
-    speedRef.current = speed
-  }, [speed])
   
   // Colors based on theme
   const colors = useMemo(() => ({
@@ -234,15 +228,15 @@ function Scene({ speed = 1 }: { speed?: number }) {
   return (
     <group ref={groupRef}>
       {/* Animated core sphere */}
-      <AnimatedCore color={colors.primaryColor} speed={speedRef.current} />
+      <AnimatedCore color={colors.primaryColor} />
       
       {/* Rings with nodes */}
       {ringConfigs.map((config) => (
         <Float
           key={config.id}
           speed={1} 
-          rotationIntensity={0.1 * speedRef.current} 
-          floatIntensity={0.2 * speedRef.current}
+          rotationIntensity={0.1} 
+          floatIntensity={0.2}
         >
           <RingWithNodes 
             ringId={config.id}
@@ -251,7 +245,6 @@ function Scene({ speed = 1 }: { speed?: number }) {
             nodeCount={config.nodeCount}
             rotation={config.rotation}
             speed={config.speed}
-            sceneSpeed={speedRef.current}
           />
         </Float>
       ))}
@@ -259,14 +252,54 @@ function Scene({ speed = 1 }: { speed?: number }) {
   )
 }
 
-// Main component with performance optimizations
+// Main component - completely ignores prop changes after initial render
 export default function SceneController({ speed = 1 }: { speed?: number }) {
   const [mounted, setMounted] = useState(false)
-  const { theme } = useTheme()
+  
+  // This is the key change: we create the Canvas ONCE and never recreate it
+  // By using an empty dependency array, this component completely ignores
+  // any props changes (including speed) after initial mount
+  const memoizedScene = useMemo(() => (
+    <Canvas
+      gl={{ 
+        alpha: true, 
+        antialias: true,
+        powerPreference: 'high-performance',
+        precision: 'highp'
+      }}
+      dpr={[1, 2]}
+      style={{ 
+        background: 'transparent', 
+        position: 'absolute', 
+        width: '100%', 
+        height: '100%' 
+      }}
+      frameloop="always"
+    >
+      <ambientLight intensity={0.6} />
+      <pointLight position={[0, 0, 0]} intensity={1.5} color="#8b5cf6" />
+      <pointLight position={[10, 10, 10]} intensity={0.5} />
+      
+      <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={40} />
+      <OrbitControls 
+        enableZoom={false} 
+        enablePan={false}
+        minPolarAngle={Math.PI / 3} 
+        maxPolarAngle={Math.PI / 1.5}
+        rotateSpeed={0.5}
+        enableDamping={true}
+        dampingFactor={0.05}
+      />
+      
+      <Suspense fallback={null}>
+        <Scene />
+        <Environment preset="night" />
+      </Suspense>
+    </Canvas>
+  ), []) // Empty dependency array = never re-render on props change
   
   useEffect(() => {
     setMounted(true)
-    return () => setMounted(false)
   }, [])
   
   if (!mounted) return null
@@ -277,41 +310,7 @@ export default function SceneController({ speed = 1 }: { speed?: number }) {
       animate={{ opacity: 1 }}
       className="w-full h-full absolute inset-0"
     >
-      <Canvas
-        gl={{ 
-          alpha: true, 
-          antialias: true,
-          powerPreference: 'high-performance',
-          precision: 'highp'
-        }}
-        dpr={[1, 2]}
-        style={{ 
-          background: 'transparent', 
-          position: 'absolute', 
-          width: '100%', 
-          height: '100%' 
-        }}
-      >
-        <ambientLight intensity={0.6} />
-        <pointLight position={[0, 0, 0]} intensity={1.5} color="#8b5cf6" />
-        <pointLight position={[10, 10, 10]} intensity={0.5} />
-        
-        <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={40} />
-        <OrbitControls 
-          enableZoom={false} 
-          enablePan={false}
-          minPolarAngle={Math.PI / 3} 
-          maxPolarAngle={Math.PI / 1.5}
-          rotateSpeed={0.5}
-          enableDamping={true}
-          dampingFactor={0.05}
-        />
-        
-        <Suspense fallback={null}>
-          <Scene speed={speed} />
-          <Environment preset="night" />
-        </Suspense>
-      </Canvas>
+      {memoizedScene}
     </motion.div>
   )
 }
