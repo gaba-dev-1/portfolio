@@ -1,0 +1,49 @@
+import { NextResponse } from 'next/server';
+import { sendEmails } from '@/lib/email-service';
+import { checkRateLimit } from '@/lib/rate-limit';
+import { z } from 'zod';
+
+// Form validation schema
+const contactSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
+
+export async function POST(request: Request) {
+  try {
+    // Get client IP for rate limiting
+    const forwardedFor = request.headers.get('x-forwarded-for');
+    const ip = forwardedFor ? forwardedFor.split(',')[0].trim() : 'unknown';
+    
+    // Check rate limit (5 requests per hour)
+    if (!checkRateLimit(ip, 5)) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again later.' },
+        { status: 429 }
+      );
+    }
+    
+    // Parse and validate request body
+    const body = await request.json();
+    const result = contactSchema.safeParse(body);
+    
+    if (!result.success) {
+      return NextResponse.json(
+        { error: 'Invalid form data', details: result.error.format() },
+        { status: 400 }
+      );
+    }
+    
+    // Send emails
+    await sendEmails(result.data);
+    
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Error processing contact form:', error);
+    return NextResponse.json(
+      { error: 'Failed to send email. Please try again later.' },
+      { status: 500 }
+    );
+  }
+}
