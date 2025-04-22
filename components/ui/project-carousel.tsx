@@ -90,6 +90,8 @@ export default function OptimalLightbox({ images, title }: OptimalLightboxProps)
         border: none;
         color: rgba(255, 255, 255, 0.8);
         font-size: 18px;
+        line-height: 1;
+        padding: 0;
         cursor: pointer;
         display: flex;
         align-items: center;
