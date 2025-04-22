@@ -72,22 +72,29 @@ export default function OptimalLightbox({ images, title }: OptimalLightboxProps)
     function createNavButton(direction: 'prev' | 'next'): HTMLButtonElement {
       const btn = document.createElement('button')
       btn.innerHTML = direction === 'prev' ? '←' : '→'
+      
+      // Check viewport width for responsive positioning
+      const isMobile = window.innerWidth < 768;
+      
       btn.style.cssText = `
         position: absolute;
-        ${direction === 'prev' ? 'left: -60px' : 'right: -60px'};
+        ${direction === 'prev' 
+          ? isMobile ? 'left: 10px' : 'left: -60px' 
+          : isMobile ? 'right: 10px' : 'right: -60px'};
         top: 50%;
         transform: translateY(-50%);
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: rgba(0, 0, 0, 0.5);
         border: none;
-        color: white;
-        font-size: 24px;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 18px;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 10;
       `
       return btn
     }
