@@ -46,7 +46,7 @@ export async function sendEmails(data: EmailData): Promise<void> {
   await Promise.all([
     // Send notification to admin
     transporter.sendMail({
-      from: `"Portfolio Contact" <${process.env.EMAIL_FROM}>`,
+      from: `"Gabadev" <${process.env.EMAIL_FROM}>`,
       to: process.env.EMAIL_TO,
       subject: `New Contact from ${name}`,
       html: adminHtml,
@@ -54,7 +54,7 @@ export async function sendEmails(data: EmailData): Promise<void> {
     
     // Send confirmation to user
     transporter.sendMail({
-      from: `"Sébastien Gimenez" <${process.env.EMAIL_FROM}>`,
+      from: `"Gabadev" <${process.env.EMAIL_FROM}>`,
       to: email,
       subject: 'Thank you for your message',
       html: userHtml,
