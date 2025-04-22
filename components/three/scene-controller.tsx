@@ -4,11 +4,9 @@ import { useRef, useState, useEffect, useMemo, Suspense } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { 
   PerspectiveCamera, 
-  OrbitControls, 
+  TrackballControls, 
   Environment, 
-  Float, 
-  Sphere,
-  useTexture,
+  Float,
   Sparkles
 } from '@react-three/drei'
 import { motion } from 'framer-motion'
@@ -547,14 +545,11 @@ export default function SceneController({ speed = 1 }: { speed?: number }) {
       />
       
       <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={40} />
-      <OrbitControls 
-        enableZoom={false} 
-        enablePan={false}
-        minPolarAngle={Math.PI / 3} 
-        maxPolarAngle={Math.PI / 1.5}
-        rotateSpeed={0.3}
-        enableDamping={true}
-        dampingFactor={0.05}
+      <TrackballControls 
+        rotateSpeed={1.5}
+        noPan={true}
+        noZoom={true}
+        dynamicDampingFactor={0.05}
       />
       
       <Suspense fallback={null}>
