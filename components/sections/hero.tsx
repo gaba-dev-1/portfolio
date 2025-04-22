@@ -104,7 +104,7 @@ export function Hero() {
           
           <motion.div 
             className="lg:w-2/5 mt-12 relative h-[400px] px-12 sm:h-[450px] lg:h-[550px] w-full"
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 1 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
