@@ -66,7 +66,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               Hi, I'm{" "}
-              <span className="text-accent">{person.name.split(" ")[0]}</span>
+              <span className="text-accent">Gaba</span>
               <span className="block">I create digital experiences</span>
             </motion.h1>
             
