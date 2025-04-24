@@ -1,9 +1,10 @@
 <div align="center">
   
 # 📦 Gaba
-> _Building interfaces for gamers_
 
 </div>
+
+> _Building interfaces for gamers_
 
 ## 👨‍💻 About Me
 Software engineer creating tools for seamless in-game use. Based in Montréal, QC.
@@ -51,5 +52,6 @@ This portfolio showcases my work in building interactive experiences with modern
 
 ---
 
-
+<div align="center">
 📦 Built by Gaba 📦
+</div>
