@@ -1,9 +1,4 @@
-<div align="center">
-  
 # 📦 Gaba
-
-</div>
-
 > _Building interfaces for gamers_
 
 ## 👨‍💻 About Me
