@@ -61,6 +61,35 @@ export function Footer() {
             <p className="mt-4 text-muted-foreground max-w-md">
               Software engineer focused on creating tailored tools for gamers and developers.
             </p>
+            
+<motion.a 
+  href="https://github.com/gaba-dev-1/portfolio"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mt-5 inline-flex items-center px-3.5 py-1.5 rounded-md text-sm font-medium
+             bg-accent text-white hover:bg-accent/90
+             transition-all duration-100"
+  whileHover={{ y: -1 }}
+  transition={{ duration: 0.1 }}
+  whileTap={{ scale: 0.98 }}
+>
+  <GithubIcon className="h-4 w-4 mr-2" />
+  <span>View Portfolio Source</span>
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="14" 
+    height="14" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className="ml-1.5"
+  >
+    <path d="M7 17l9.2-9.2M17 17V7H7"/>
+  </svg>
+</motion.a>
           </div>
           
           <div>
