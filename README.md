@@ -1,4 +1,4 @@
-# 📦 GABA
+# 📦 Gaba
 
 > _Building interfaces for gamers_
 
