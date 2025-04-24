@@ -46,6 +46,4 @@ Software engineer creating tools designed for seamless in-game use. Based in Mon
 
 ---
 
-<div align="center">
 📦 Built by Gaba 📦
-</div>
