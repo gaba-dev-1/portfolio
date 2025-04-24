@@ -23,8 +23,8 @@ const robotoMono = Roboto_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Sébastien Gimenez | Software Engineer',
-  description: 'Portfolio of Sébastien Gimenez, a Software Engineer specializing in building tailored interfaces for gamers and developers.',
+  title: 'Gaba | Software Engineer',
+  description: 'Portfolio of Sébastien Gimenez, Software Engineer building tailored interfaces for gamers and developers.',
   keywords: ['Software Engineer', 'Web Developer', 'Game Development', 'Portfolio', 'Frontend', 'React'],
   authors: [{ name: 'Sébastien Gimenez', url: 'https://gabadev.com' }],
   creator: 'Sébastien Gimenez',
@@ -32,8 +32,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://gabadev.com',
-    title: 'Sébastien Gimenez | Software Engineer',
-    description: 'Portfolio of Sébastien Gimenez, a Software Engineer specializing in building tailored interfaces for gamers and developers.',
+    title: 'Gaba | Software Engineer',
+    description: 'Portfolio of Sébastien Gimenez, Software Engineer building tailored interfaces for gamers and developers.',
     siteName: 'Sébastien Gimenez Portfolio',
     images: [
       {
@@ -46,8 +46,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sébastien Gimenez | Software Engineer',
-    description: 'Portfolio of Sébastien Gimenez, a Software Engineer specializing in building tailored interfaces for gamers and developers.',
+    title: 'Gaba | Software Engineer',
+    description: 'Portfolio of Sébastien Gimenez, Software Engineer building tailored interfaces for gamers and developers.',
     creator: '@MetaForgeLol',
     images: ['/og-image.jpg'],
   },
