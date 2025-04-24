@@ -2,11 +2,10 @@
 > _Building interfaces for gamers_
 
 ## 👨‍💻 About Me
-Software engineer creating tools for seamless in-game use. Based in Montréal, QC.
+Software engineer creating tools designed for seamless in-game use. Based in Montréal, QC.
 
   
 ## ⚛️ Portfolio
-This portfolio showcases my work in building interactive experiences with modern tech:
 
 ### Tech Stack
 
