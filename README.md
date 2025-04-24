@@ -1,39 +1,23 @@
 <div align="center">
   
 # 📦 Gaba
-
-</div>
-
 > _Building interfaces for gamers_
 
-<div align="center">
-  
-## 👨‍💻 About Me
-
 </div>
 
+## 👨‍💻 About Me
 Software engineer creating tools for seamless in-game use. Based in Montréal, QC.
 
-<div align="center">
   
 ## ⚛️ Portfolio
-
-</div>
-
 This portfolio showcases my work in building interactive experiences with modern tech:
 
-<div align="center">
-  
 ### Tech Stack
-
-</div>
 
 - **Frontend**: React with Next.js 14, TypeScript, TailwindCSS
 - **3D Graphics**: Three.js with React Three Fiber/Drei
 - **Motion**: Framer Motion for fluid transitions
 
-<div align="center">
-  
 ## 🚀 Projects
 - **[MetaForge](https://metaforge.lol)** | *Tools For Tacticians*  
   Analytics platform with real-time insights for Teamfight Tactics gamers
@@ -44,12 +28,7 @@ This portfolio showcases my work in building interactive experiences with modern
 - **[GameGuru](https://gameguru.gg)** | *Your In-Game Assistant*  
   Desktop overlay with contextual gaming tips and config/display custom modes
 
-<div align="center">
-  
 ## 💻 Skills & Services
-
-</div>
-
 
 **Technical Skills**
 - **Frontend**: React, TypeScript
@@ -63,11 +42,7 @@ This portfolio showcases my work in building interactive experiences with modern
 - **3D Visualizations** - Engaging user experiences
 - **Cross-platform Apps** - Works across devices
 
-<div align="center">
-  
 ## 🌐 Connect
-
-</div>
 
 - Website: [gabadev.com](https://gabadev.com)
 - Twitter: [@MetaForgeLol](https://twitter.com/MetaForgeLol)
