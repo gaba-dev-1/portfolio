@@ -1,3 +1,4 @@
+<div align="center">
 # 📦 Gaba
 
 > _Building interfaces for gamers_
@@ -44,5 +45,7 @@ This portfolio showcases my work in building interactive experiences with modern
 - Email: contact@gabadev.com
 
 ---
+
+</div>
 
 📦 Built by Gaba 📦
