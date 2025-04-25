@@ -10,7 +10,7 @@
 
 ## ⚙️ Tech Stack
 
-- **Frontend**: Next.js 14, TypeScript, TailwindCSS
+- **Frontend**: Next.js, TypeScript, TailwindCSS
 - **3D Graphics**: Three.js with React Three Fiber/Drei
 - **Motion**: Framer Motion for animations
 - **Forms**: React Hook Form + Zod validation
