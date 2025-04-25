@@ -1,6 +1,6 @@
-# ⚛️ Portfolio
+# ⚛️ Gaba's Portfolio
 
- Gaba's personal presentation, projects-skills-experience showcase, then a contact section.
+  Includes personal presentation, projects-skills-experience showcase, then a contact section.
 
 ## 🚀 Key Features
 
