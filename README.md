@@ -1,6 +1,6 @@
 # ⚛️ Portfolio
 
- Includes personal presentation with 3D animations, projects-skills-experience showcase, then a contact section.
+ Gaba's personal presentation, projects-skills-experience showcase, then a contact section.
 
 ## 🚀 Key Features
 
