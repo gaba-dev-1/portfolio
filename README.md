@@ -1,6 +1,6 @@
 # ⚛️ Portfolio
 
- Gaba's portfolio including 3D animations and responsive design.
+ Includes personal presentation with 3D animations, projects-skills-experience showcase, then a contact section.
 
 ## 🚀 Key Features
 
