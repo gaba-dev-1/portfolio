@@ -38,7 +38,6 @@
 ## 🌐 Connect
 
 - Website: [gabadev.com](https://gabadev.com)
-- GitHub: [github.com/gaba-dev-1](https://github.com/gaba-dev-1)
 - Twitter: [@MetaForgeLol](https://twitter.com/MetaForgeLol)
 - Discord: [discord.gg/gY5PsymH](https://discord.gg/gY5PsymH)
 - Email: contact@gabadev.com
