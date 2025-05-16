@@ -44,20 +44,6 @@ Personal portfolio website showcasing projects, skills, and experience with inte
   - `email-service.ts`: Contact functionality
 - `/public`: Static assets and images
 
-## 🎨 Design Principles
-- Clean, minimalist interface
-- Focus on content with strategic visual elements
-- Performance-optimized animations
-- Accessibility-first approach
-- Consistent visual language across sections
-
-## 🔄 Development Workflow
-- TypeScript for type safety
-- ESLint and Prettier for code quality
-- Husky for pre-commit hooks
-- GitHub Actions for CI/CD
-- Incremental Static Regeneration for content updates
-
 ## 🌐 Connect
 - Website: [gabadev.com](https://gabadev.com)
 - Twitter: [@MetaForgeLol](https://twitter.com/MetaForgeLol)
