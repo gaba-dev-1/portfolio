@@ -10,7 +10,7 @@
 
 </div>
 
-## 🌟 Overview
+## 📋 Overview
 Personal portfolio website showcasing projects, skills, and experience with interactive elements and professional presentation.
 
 ## 🚀 Key Features
