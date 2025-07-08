@@ -1,0 +1,12 @@
+{
+  "name": "gabadev",
+  "version": "1.0.0",
+  "description": "Portfolio website & project showcase",
+  "author": "Gaba Dev",
+  "license": "CC0-1.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  }
+}
