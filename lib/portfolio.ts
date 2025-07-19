@@ -3,7 +3,7 @@ export const person = {
   alias: 'Gaba',
   role: 'Software Engineer',
   location: 'Montréal, QC',
-  bio: `I write code & play games.`,
+  bio: `Welcome to my portfolio.`,
   tagline: `Building interfaces for productivity & gaming. Trying to understand what makes systems work (or fail).`,
   skills: [
     { name: 'React', level: 'Advanced' },
